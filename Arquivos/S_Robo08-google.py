@@ -1,6 +1,7 @@
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.keys import Keys
 import time as t 
+
 navegador = Chrome()
 
 navegador.get("https://busca.inpi.gov.br/pePI/servlet/LoginController?action=login")
@@ -19,9 +20,9 @@ while c < 7:
     except:
         t.sleep(1)
 navegador.find_element('name','ExpressaoPesquisa').send_keys('03768202000176')
-t.sleep(0.5)
+t.sleep(1)
 navegador.find_element('xpath', '//select[2]/option[4]').click()
 t.sleep(1)
-navegador.find_element('css_selector','input[type="submit"]').click()
-
-
+navegador.find_element('xpath','//*[@id="principal"]/table[2]/tbody/tr[10]/td/font/input[1]').click()
+t.sleep(1)
+navegador.close()
