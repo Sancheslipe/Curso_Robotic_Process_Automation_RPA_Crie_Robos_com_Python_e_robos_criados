@@ -10,7 +10,7 @@ def abrir_arquivos_e_separar():
     nomes_totais_df = []
     #caso a colunapossui nao exista ele cria e adiciona caracteres vázios
     if 'possui' not in arquivo_principal_df:
-        arquivo_principal_df['possui'] = np.nan
+        arquivo_principal_df['possui'] = np.NaN
 
     #apende todos os arquivos em  so para fazer as comparacoes
     for x in range(1,11):
