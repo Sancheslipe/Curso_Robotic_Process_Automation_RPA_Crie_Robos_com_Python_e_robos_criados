@@ -1,0 +1,101 @@
+/* OUTPUT CASPERJS SCRIPT FOR TAGUI FRAMEWORK ~ TEBEL.ORG */
+
+var casper = require('casper').create();
+// TagUI web automation browser settings
+// verbose style to support tester module
+
+// set default flow language
+var tagui_language = 'english';
+
+// set time in ms before error out
+casper.options.waitTimeout = 10000;
+casper.options.logLevel = 'debug';
+
+// set web browser display size
+casper.options.viewportSize = {
+width: 1366,
+height: 768
+};
+
+// settings for PhantomJS mode
+casper.options.pageSettings = {
+loadImages: true,
+loadPlugins: true,
+webSecurityEnabled: true,
+ignoreSslErrors: false,
+localToRemoteUrlAccessEnabled: false
+};
+
+// Q1. Why is formatting for this file so messed up? - it's created on the road
+// If you want to know more - https://github.com/kelaberetiv/TagUI/issues/490
+
+// Q2. Is there a beautified version for easier viewing or editing? - yes snapshot below
+// https://github.com/kelaberetiv/TagUI/blob/master/src/media/snapshots/tagui_header.md
+
+// xpath for object identification
+var xps666 = require('casper').selectXPath;
+
+// assign parameters to p1-p9 variables
+var p1 = casper.cli.raw.get(0); var p2 = casper.cli.raw.get(1); var p3 = casper.cli.raw.get(2);
+var p4 = casper.cli.raw.get(3); var p5 = casper.cli.raw.get(4); var p6 = casper.cli.raw.get(5);
+var p7 = casper.cli.raw.get(6); var p8 = casper.cli.raw.get(7); var p9 = casper.cli.raw.get(8);
+
+// save start time to measure execution time
+var automation_start_time = Date.now(); casper.echo('\nSTART - automation started - ' + Date().toLocaleString());
+
+// initialise time for timer() function
+var timer_start_time = Date.now();
+
+// infinity constant for use in for loops
+var infinity = 1024;
+
+// initialise default global variables
+var quiet_mode = false; var save_text_count = 0; var snap_image_count = 0;
+
+// counters for tracking messages in r, python, sikuli, chrome integrations
+var r_count = 0; var py_count = 0; var sikuli_count = 0; var chrome_id = 0;
+
+// chrome context for frame handling and targetid for popup handling
+var chrome_context = 'document'; var chrome_targetid = '';
+
+// variables to track frame offset if current context is within a frame
+var frame_step_offset_x = 0; var frame_step_offset_y = 0;
+var original_frame_step_offset_x = 0; var original_frame_step_offset_y = 0;
+
+// variable for ask step to accept user input
+var ask_result = '';
+
+// JSON variable to pass variables into browser DOM
+var dom_json = {}; var dom_result = '';
+
+// variable for advance usage of api step
+var api_config = {method:'GET', header:[], body:{}};
+
+// variables for api and run steps execution result
+var api_result = ''; var api_json = {}; var run_result = ''; var run_json = {};
+
+// variables for R and Python integration execution result
+var r_result = ''; var r_json = {}; var py_result = ''; var py_json = {};
+
+// track begin-finish blocks for integrations eg - py, r, run, vision, js, dom
+var inside_py_block = 0; var inside_r_block = 0; var inside_run_block = 0;
+var inside_vision_block = 0; var inside_js_block = 0; var inside_dom_block = 0;
+
+// determine how many casper.then steps to skip
+function teleport_distance(teleport_marker) {number_to_hop = 0;
+if (teleport_marker.indexOf('[BREAK_SIGNAL]') > -1) {for (s = casper.steps.length-1; s >= 0; s--) {
+if (casper.steps[s].toString() == ("function () {for_loop_signal = '"+teleport_marker+"';}"))
+{number_to_hop = s; break;}};} // search backward direction for break step
+else if (teleport_marker.indexOf('[CONTINUE_SIGNAL]') > -1) {for (s = casper.step; s <= casper.steps.length-1; s++) {
+if (casper.steps[s].toString() == ("function () {for_loop_signal = '"+teleport_marker+"';}"))
+{number_to_hop = s; break;}}; // search forward direction for continue step
+if (number_to_hop == 0) {for (s = casper.steps.length-1; s >= 0; s--) {if (casper.steps[s].toString() == 
+("function () {for_loop_signal = '"+teleport_marker.replace('[CONTINUE_SIGNAL]','[BREAK_SIGNAL]')+"';}"))
+{number_to_hop = s; break;}};}} // handle as break if no step left to continue
+else return 0; if ((number_to_hop - casper.step) > 0) return (number_to_hop - casper.step); else return 0;}
+
+// techo function for handling quiet option
+function techo(echo_string) {if (!quiet_mode) { // mute about:blank, eg for desktop automation
+if ((echo_string == 'about:blank - \n') || (echo_string == '\nabout:blank - ')) casper.echo('');
+else if (tagui_language.toLowerCase() == 'english') casper.echo(echo_string);
+else {var translated_string = translate(echo_string,'to',tagui_language.toLowerCase()); casper.echo(tra

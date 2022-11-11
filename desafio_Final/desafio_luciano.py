@@ -126,6 +126,7 @@ def preencher_campos(data_frame):
         my_screenshot = p.screenshot()
         my_screenshot.save(r'C:\\Curso02_github\\desafio_Final\\screenshots\\ultimo_print.png')
         print('salvou screenshot')
+        os.system('taskkill /f /im chrome.exe')
 
     except:
         exc_type, error, line = sys.exc_info()
@@ -165,3 +166,4 @@ if (__name__ == '__main__'):
     os.system('taskkill /f /im chrome.exe')
     os.system('cls')
     bot_atividade_001()
+    print('programa finalizado com sucesso! ')

@@ -6,11 +6,13 @@ r.init()
 r.url('http://rpachallenge.com')
 janela = p.getActiveWindow()
 janela.maximize()
-p.sleep(7)
+p.sleep(2)
 
-#dando erro
-# r.download('http://rpachallenge.com/assets/downloadFiles/challenge.xlsx', 'challenge.xlsx')
+
+# EStá dando erro o download
+# r.download_location('https://rpachallenge.com/assets/downloadFiles/challenge.xlsx')
 # p.sleep(1)
+r.mouse()
 
 dados = pd.read_excel("C:\\Users\\Ana Paula\\Downloads\\challenge.xlsx", sheet_name='Sheet1')
 
@@ -30,3 +32,5 @@ for row in df.itertuples():
 p.sleep(5)
 p.screenshot('score.png')
 r.close()
+
+print('\nprograma encerrado com sucesso!\n')

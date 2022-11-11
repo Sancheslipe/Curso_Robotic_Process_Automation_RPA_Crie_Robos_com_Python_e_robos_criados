@@ -6,12 +6,12 @@ r.init()
 r.url('http://rpachallenge.com')
 janela = p.getActiveWindow()
 janela.maximize()
-p.sleep(7)
+p.sleep(2)
 
-r.download('http://rpachallenge.com/assets/downloadFiles/challenge.xlsx', 'challenge.xlsx')
+# r.download('http://rpachallenge.com/assets/downloadFiles/challenge.xlsx', 'challenge.xlsx')
 p.sleep(1)
 
-dados = pd.read_excel('challenge.xlsx', sheet_name='Sheet1')
+dados = pd.read_excel('"C:\\Users\Ana Paula\\Downloads\\challenge.xlsx"', sheet_name='Sheet1')
 
 df = pd.DataFrame(dados, columns=["First Name",	"Last Name ", "Company Name", "Role in Company", "Address", "Email", "Phone Number"])
 
