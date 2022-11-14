@@ -1,6 +1,91 @@
 
-START - automation started - Fri Nov 11 2022 13:34:40 GMT-0300 (Hora oficial do Brasil)
+START - automation started - Mon Nov 14 2022 08:17:07 GMT-0300 (Hora oficial do Brasil)
 
 LIVE MODE - type done to quit
  [RPA][STARTED]
 [RPA][0] - listening for inputs
+[RPA][1] - http://rpachallenge.com
+[RPA][1] - listening for inputs
+[RPA][2] - exist_result = exist('/html/body/app-root/div[2]/app-rpa1/div/div[1]/div[6]/button').toString()
+[RPA][2] - listening for inputs
+[RPA][3] - dump exist_result to rpa_python.txt
+[RPA][3] - listening for inputs
+[RPA][4] - click /html/body/app-root/div[2]/app-rpa1/div/div[1]/div[6]/button
+[RPA][4] - listening for inputs
+[RPA][5] - exist_result = exist('//*[@ng-reflect-name="labelFirstName"]').toString()
+[RPA][5] - listening for inputs
+[RPA][6] - dump exist_result to rpa_python.txt
+[RPA][6] - listening for inputs
+[RPA][7] - type //*[@ng-reflect-name="labelFirstName"] as John
+[RPA][7] - listening for inputs
+[RPA][8] - exist_result = exist('//*[@ng-reflect-name="labelLastName"]').toString()
+[RPA][8] - listening for inputs
+[RPA][9] - dump exist_result to rpa_python.txt
+[RPA][9] - listening for inputs
+[RPA][10] - type //*[@ng-reflect-name="labelLastName"] as Smith
+[RPA][10] - listening for inputs
+[RPA][11] - exist_result = exist('//*[@ng-reflect-name="labelCompanyName"]').toString()
+[RPA][11] - listening for inputs
+[RPA][12] - dump exist_result to rpa_python.txt
+[RPA][12] - listening for inputs
+[RPA][13] - type //*[@ng-reflect-name="labelCompanyName"] as IT Solutions
+[RPA][13] - listening for inputs
+[RPA][14] - exist_result = exist('//*[@ng-reflect-name="labelRole"]').toString()
+[RPA][14] - listening for inputs
+[RPA][15] - dump exist_result to rpa_python.txt
+[RPA][15] - listening for inputs
+[RPA][16] - type //*[@ng-reflect-name="labelRole"] as Analyst
+[RPA][16] - listening for inputs
+[RPA][17] - exist_result = exist('//*[@ng-reflect-name="labelAddress"]').toString()
+[RPA][17] - listening for inputs
+[RPA][18] - dump exist_result to rpa_python.txt
+[RPA][18] - listening for inputs
+[RPA][19] - type //*[@ng-reflect-name="labelAddress"] as 98 North Road
+[RPA][19] - listening for inputs
+[RPA][20] - exist_result = exist('//*[@ng-reflect-name="labelEmail"]').toString()
+[RPA][20] - listening for inputs
+[RPA][21] - dump exist_result to rpa_python.txt
+[RPA][21] - listening for inputs
+[RPA][22] - type //*[@ng-reflect-name="labelEmail"] as jsmith@itsolutions.co.uk
+[RPA][22] - listening for inputs
+[RPA][23] - exist_result = exist('//*[@ng-reflect-name="labelPhone"]').toString()
+[RPA][23] - listening for inputs
+[RPA][24] - dump exist_result to rpa_python.txt
+[RPA][24] - listening for inputs
+[RPA][25] - type //*[@ng-reflect-name="labelPhone"] as 40716543298
+[RPA][25] - listening for inputs
+[RPA][26] - exist_result = exist('/html/body/app-root/div[2]/app-rpa1/div/div[2]/form/input').toString()
+[RPA][26] - listening for inputs
+[RPA][27] - dump exist_result to rpa_python.txt
+[RPA][27] - listening for inputs
+[RPA][28] - click /html/body/app-root/div[2]/app-rpa1/div/div[2]/form/input
+[RPA][28] - listening for inputs
+[RPA][29] - exist_result = exist('//*[@ng-reflect-name="labelFirstName"]').toString()
+[RPA][29] - listening for inputs
+[RPA][30] - dump exist_result to rpa_python.txt
+[RPA][30] - listening for inputs
+[RPA][31] - type //*[@ng-reflect-name="labelFirstName"] as Jane
+[RPA][31] - listening for inputs
+[RPA][32] - exist_result = exist('//*[@ng-reflect-name="labelLastName"]').toString()
+[RPA][32] - listening for inputs
+[RPA][33] - dump exist_result to rpa_python.txt
+[RPA][33] - listening for inputs
+[RPA][34] - type //*[@ng-reflect-name="labelLastName"] as Dorsey
+[RPA][34] - listening for inputs
+[RPA][35] - exist_result = exist('//*[@ng-reflect-name="labelCompanyName"]').toString()
+[RPA][35] - listening for inputs
+[RPA][36] - dump exist_result to rpa_python.txt
+[RPA][36] - listening for inputs
+[RPA][37] - type //*[@ng-reflect-name="labelCompanyName"] as MediCare
+[RPA][37] - listening for inputs
+[RPA][38] - exist_result = exist('//*[@ng-reflect-name="labelRole"]').toString()
+[RPA][38] - listening for inputs
+[RPA][39] - dump exist_result to rpa_python.txt
+[RPA][39] - listening for inputs
+[RPA][40] - type //*[@ng-reflect-name="labelRole"] as Medical Engineer
+[RPA][40] - listening for inputs
+[RPA][41] - exist_result = exist('//*[@ng-reflect-name="labelAddress"]').toString()
+[RPA][41] - listening for inputs
+[RPA][42] - dump exist_result to rpa_python.txt
+[RPA][42] - listening for inputs
+[RPA][43] - type //*[@ng-reflect-name="labelAddress"] as 11 Crown Street
