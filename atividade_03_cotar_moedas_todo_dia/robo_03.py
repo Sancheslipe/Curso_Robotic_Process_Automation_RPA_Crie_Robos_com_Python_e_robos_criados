@@ -8,7 +8,7 @@ def cotacao_dolar_euro_bitcoin():
     cotacao_dolar = requisicao_dic["USDBRL"]["bid"]
     cotacao_euro = requisicao_dic["EURBRL"]["bid"]
     cotacao_btc = requisicao_dic["BTCBRL"]["bid"]
-    print(f'Cotação Atualizada. {datetime.now()}\nDólar: R${cotacao_dolar}\nEuro: R${cotacao_euro}\nBTC: R${cotacao_btc}')
+    print(f'Cotação Atualizada. Data [{datetime.now()}]\nDólar: R${cotacao_dolar}\nEuro: R${cotacao_euro}\nBTC: R${cotacao_btc}')
     return cotacao_dolar,cotacao_euro,cotacao_btc
 
 def bot_atividade_003():
@@ -25,5 +25,5 @@ def bot_atividade_003():
 if (__name__ == '__main__'):
     os.system('cls')
     bot_atividade_003()
-    print('\nprocesso Encerrado !\no')
+    print('\nprocesso Encerrado !\n')
     

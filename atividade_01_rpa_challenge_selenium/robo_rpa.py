@@ -8,13 +8,16 @@ janela = p.getActiveWindow()
 janela.maximize()
 p.sleep(2)
 
-
+r.click('/html/body/app-root/div[2]/app-rpa1/div/div[1]/div[6]/a')
+p.sleep(5)
+p.click(x=1350, y=688)
+p.sleep(2)
 # EStá dando erro o download
 # r.download_location('https://rpachallenge.com/assets/downloadFiles/challenge.xlsx')
 # p.sleep(1)
 r.mouse()
-
-dados = pd.read_excel("C:\\Users\\Ana Paula\\Downloads\\challenge.xlsx", sheet_name='Sheet1')
+p.sleep(3)
+dados = pd.read_excel("C:\\Curso02_github\\challenge.xlsx", sheet_name='Sheet1')
 
 df = pd.DataFrame(dados, columns=["First Name",	"Last Name ", "Company Name", "Role in Company", "Address", "Email", "Phone Number"])
 

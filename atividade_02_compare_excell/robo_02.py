@@ -17,6 +17,7 @@ def abrir_arquivos_e_separar():
         nomes_df = pd.read_excel(f'C:\\Curso02_github\\atividade_02_compare_excell\\base_de_dados\\arquivo_{x}.xlsx')
         nomes_totais_df.append(nomes_df['nome'])
     print(f'a quantidade de linhas do arquivo principal é {len(nomes_principal_df)}\n')
+    
     return nomes_principal_df,nomes_totais_df,arquivo_principal_df
 
 
