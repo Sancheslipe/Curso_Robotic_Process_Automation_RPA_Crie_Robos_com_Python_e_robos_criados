@@ -3,7 +3,6 @@ from requests.adapters import HTTPAdapter, Retry
 import json
 import sys
 
-lista_mostrar = []
 
 def retornar_dados_cnpj(CNPJ,UF):
     erro = None
@@ -69,12 +68,12 @@ if (__name__ == "__main__"):
     cnpj = input("digite aqui o cnpj da sua empresa: ")
     uf = input("digite aqui a sigla de sua unidade federal: ")
     #criar as variáveis que deseja utilizar
-    print(retornar_dados_cnpj(cnpj,uf))
+    # print(retornar_dados_cnpj(cnpj,uf))
     #para mostrar cada informacao em uma linha especifica use o código abaixo
-    '''
-    lista_mostrar = []
+    
     lista_mostrar = retornar_dados_cnpj(cnpj,uf)
+    print(len(lista_mostrar))
     for l in range(0,len(lista_mostrar)):
         print(f'{lista_mostrar[l]}',end='\n')
-    '''
+    
     print("Programa Finalizado!")
