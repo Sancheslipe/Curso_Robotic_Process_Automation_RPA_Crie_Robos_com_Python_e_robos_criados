@@ -23,7 +23,5 @@ class Imovel:
         self.driver.maximize_window()
 
 
-    def pegar_dados():
-
-
-
+    def pegar_dados(self, quantidade):
+        pass
