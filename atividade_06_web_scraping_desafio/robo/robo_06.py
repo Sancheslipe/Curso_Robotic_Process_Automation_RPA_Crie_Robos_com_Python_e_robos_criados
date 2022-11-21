@@ -26,41 +26,30 @@ def abrir_preparar_site(driver,url):
     
 
 def pegar_informacoes(qtde):
-    
+    #Xpaths do porte estavam dando vários problemas, por isso guardei-os em um array para serem utilizados de maneira mais eficiente
     xpath_porte = ['/html/body/div[1]/div[1]/div/div[1]/p[4]/b','/html/body/div/div[1]/div/div[1]/p[5]/b','/html/body/div/div[1]/div/div[1]/p[4]/b']
-    
     pessoa = int(qtde)
-    
     #clica na pessoa
     driver.find_element(By.CSS_SELECTOR ,f"body > div.bg-white > main > div.max-w-4xl.mx-auto.bg-white.shadow.overflow-hidden.sm\:rounded-md > ul > li:nth-child({pessoa}) > a > div > div.flex.items-center.justify-between > p").click()
     sleep(3)
     #Nome:
     nome = driver.find_element(By.XPATH,'/html/body/div/div[1]/div/div[1]/p[2]/span/b').text
-    # print(f'Nome : {nome}') 
-    
-    # #data de abertura:
-    dias = driver.find_element(By.XPATH,'/html/body/div[1]/div[1]/div/div[1]/p[3]/span[1]/b').text
-                                        
-    # print(f'Data abertura : {dias}')
+    #dias:
+    dias = driver.find_element(By.XPATH,'/html/body/div[1]/div[1]/div/div[1]/p[3]/span[1]/b').text                              
     if dias[0:2].isdigit():
-        dias = dias
-        
+        dias = dias  
     else:
         dias = driver.find_element(By.XPATH,'/html/body/div/div[1]/div/div[1]/p[4]/span[1]/b').text
-        
-    try:       
-
+    #porte
+    try:
         porte = driver.find_element(By.XPATH,xpath_porte[0]).text
-
     except:
         sleep(1)
     try:       
-
         porte = driver.find_element(By.XPATH,xpath_porte[1]).text
     except:
         sleep(1)
     try:       
-
         porte = driver.find_element(By.XPATH,xpath_porte[2]).text
     except:
         sleep(1)
@@ -68,22 +57,51 @@ def pegar_informacoes(qtde):
 
 
 def armazenar_informacoes():
+    qtde = 1
     nome_list = []
     dias_list = []
     porte_list = []
-    for qtde in range(1,28):
-        print(f'raspando dados da Empresa {qtde}')
-        if qtde == 14 or qtde == 15:
-            print()
-        else:
-            situacao = driver.find_element(By.CSS_SELECTOR ,f"body > div > main > div.max-w-4xl.mx-auto.bg-white.shadow.overflow-hidden.sm\:rounded-md > ul > li:nth-child({qtde}) > a > div > div.flex.items-center.justify-between > div").text
-            if situacao.upper() == 'ATIVA':
-                nome,dias,porte = pegar_informacoes(qtde)
-                nome_list.append(nome)
-                dias_list.append(dias)
-                porte_list.append(porte)
-                sleep(0.5)
-                p.hotkey('browserback')    
+    # for qtde in range(1,28):
+    #     print(f'raspando dados da Empresa {qtde}')
+    #     if qtde == 14 or qtde == 15:
+    #         print()
+    #     else:
+    #         situacao = driver.find_element(By.CSS_SELECTOR ,f"body > div > main > div.max-w-4xl.mx-auto.bg-white.shadow.overflow-hidden.sm\:rounded-md > ul > li:nth-child({qtde}) > a > div > div.flex.items-center.justify-between > div").text
+    #         if situacao.upper() == 'ATIVA':
+    #             nome,dias,porte = pegar_informacoes(qtde)
+    #             nome_list.append(nome)
+    #             dias_list.append(dias)
+    #             porte_list.append(porte)
+    #             sleep(0.5)
+    #             p.hotkey('browserback')
+    for l in range(4):
+        qtde = 1
+        sleep(3)
+        while qtde >=1 and qtde<28:
+            print(f'raspando dados da pagina {l + 1} empresa {qtde}')
+            if qtde == 14 or qtde == 15:
+                print()
+                qtde += 1
+            else:
+                situacao = driver.find_element(By.CSS_SELECTOR ,f"body > div > main > div.max-w-4xl.mx-auto.bg-white.shadow.overflow-hidden.sm\:rounded-md > ul > li:nth-child({qtde}) > a > div > div.flex.items-center.justify-between > div").text
+                if situacao.upper() == 'ATIVA':
+                    nome,dias,porte = pegar_informacoes(qtde)
+                    nome_list.append(nome)
+                    dias_list.append(dias)
+                    porte_list.append(porte)
+                    sleep(0.5)
+                    p.hotkey('browserback')
+                    qtde += 1
+                else:
+                    qtde += 1
+
+
+
+
+        driver.find_element(By.XPATH,'/html/body/div[1]/main/div[3]/div[1]/div/a').click()
+        print('\nPASSOU 1 PÁGINA!\n')
+        sleep(2)
+
     return nome_list,dias_list,porte_list   
 
 
@@ -112,13 +130,14 @@ def bot_006(driver):
         exc_type, error, line = sys.exc_info()
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
 #faster solution
-# options = webdriver.ChromeOptions()
-# options.add_experimental_option('excludeSwitches', ['enable-logging'])
-# driver = webdriver.Chrome(options=options)
-# bot_006(driver)
+options = webdriver.ChromeOptions()
+options.add_experimental_option('excludeSwitches', ['enable-logging'])
+driver = webdriver.Chrome(options=options)
+bot_006(driver)
 
-if (__name__ == '__main__'):
-    options = webdriver.ChromeOptions()
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = webdriver.Chrome(options=options)
-    bot_006(driver)
+# if (__name__ == '__main__'):
+##    laziest solution
+#     options = webdriver.ChromeOptions()
+#     options.add_experimental_option('excludeSwitches', ['enable-logging'])
+#     driver = webdriver.Chrome(options=options)
+#     bot_006(driver)
