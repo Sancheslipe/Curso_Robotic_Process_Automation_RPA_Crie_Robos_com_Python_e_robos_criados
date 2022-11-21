@@ -125,19 +125,21 @@ def bot_006(driver):
         abrir_preparar_site(driver,'https://cnpj.biz/empresas/blumenau-sc')
         sleep(1)
         list1,list2,list3 = armazenar_informacoes()
-        salvar_em_excell(list1,list2,list3)       
+        salvar_em_excell(list1,list2,list3)     
     except:
         exc_type, error, line = sys.exc_info()
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
 #faster solution
-options = webdriver.ChromeOptions()
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
-driver = webdriver.Chrome(options=options)
-bot_006(driver)
+# options = webdriver.ChromeOptions()
+# options.add_experimental_option('excludeSwitches', ['enable-logging'])
+# driver = webdriver.Chrome(options=options)
+# bot_006(driver)
 
-# if (__name__ == '__main__'):
-##    laziest solution
-#     options = webdriver.ChromeOptions()
-#     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-#     driver = webdriver.Chrome(options=options)
-#     bot_006(driver)
+if (__name__ == '__main__'):
+#    laziest solution
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    driver = webdriver.Chrome(options=options)
+    bot_006(driver)
+    print('Robô executado com sucesso')
+    driver.close()

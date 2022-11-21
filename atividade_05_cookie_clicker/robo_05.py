@@ -58,7 +58,7 @@ def abrir_e_configurar_site():
     print('achou')
     p.click()
     print('clicou')
-    time.sleep(8)
+    time.sleep(9)
     print('achou 2')
     p.moveTo(x=1310, y=694)
     p.doubleClick()
