@@ -17,3 +17,5 @@ navegador.find_element(By.XPATH,'/html/body/div[10]/section/div/div/div[2]/div/d
 sleep(1)
 test = navegador.find_element(By.XPATH,preco).text
 print(test)
+navegador.close()
+
