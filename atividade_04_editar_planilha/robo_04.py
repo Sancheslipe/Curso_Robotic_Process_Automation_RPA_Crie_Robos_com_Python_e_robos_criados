@@ -4,7 +4,7 @@ import sys
 import os
 
 def abrir_arquivo():
-    arquivo = pd.read_excel(f'C:\\Users\\Ana Paula\\Downloads\\alterar_tabela.xlsx')
+    arquivo = pd.read_excel(f'C:\\Users\\Ana Paula\\Downloads\\alterar_tabela.xlsx.xlsx')
     tamanho = len(arquivo)
     return tamanho, arquivo
 
@@ -21,8 +21,7 @@ def editar_arquivo(tamanho,arquivo):
         else:
             cont = cont
             print('digite um valor válido! ')
-    arquivo.to_excel(f'C:\\Users\\Ana Paula\\Downloads\\alterar_tabela.xlsx',index=False)
-    print('arquivo finalizado com sucesso! ')
+    arquivo.to_excel(f'C:\\Users\\Ana Paula\\Downloads\\alterar_tabela.xlsx.xlsx',index=False)
 
 def bot_atividade_04():
     try:
@@ -37,3 +36,5 @@ if (__name__ == '__main__'):
     os.system('cls')
     bot_atividade_04()
     print('Bot finalizado com sucesso Encerrado !')
+
+#para que a atividade rode perfeitamente é necessário um arquivo excel com informações já inputadas nele, e também copiar o caminho dele
