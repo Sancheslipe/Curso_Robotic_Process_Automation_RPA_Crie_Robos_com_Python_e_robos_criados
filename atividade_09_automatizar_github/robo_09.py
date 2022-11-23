@@ -19,7 +19,7 @@ def escolher_pagina_e_subir_arquivos():
     x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\Curso02_github.png')
     p.moveTo(x1,y1,duration=1)
     p.click()
-    x1,y1 = 147, 502
+    x1,y1 = 150, 550
     p.moveTo(x1,y1,duration=1)
     p.click()
     write(f'{datetime.datetime.now()}')
@@ -31,7 +31,7 @@ def escolher_pagina_e_subir_arquivos():
     x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\commit_to_main.png')
     p.moveTo(x1,y1,duration=1)
     p.click()
-    sleep(1)
+    sleep(3)
     p.hotkey('ctrl','p')
 
 
