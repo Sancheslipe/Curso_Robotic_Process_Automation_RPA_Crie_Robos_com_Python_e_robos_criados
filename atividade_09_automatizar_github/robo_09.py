@@ -6,6 +6,7 @@ import os
 
 
 def abrir_github():
+    p.FAILSAFE = False
     p.hotkey('win','r')
     write('C:\\Users\\Ana Paula\\AppData\\Local\\GitHubDesktop\\GitHubDesktop.exe')
     p.press('enter')
@@ -13,6 +14,7 @@ def abrir_github():
 
 
 def escolher_pagina_e_subir_arquivos():
+    p.FAILSAFE = False
     x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\listar_repositorio.png')
     p.moveTo(x1,y1,duration=1)
     p.click()
