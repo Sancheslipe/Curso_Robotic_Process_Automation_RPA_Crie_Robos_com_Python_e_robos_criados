@@ -1,10 +1,8 @@
 import pyautogui as p 
-import os 
 from keyboard import write
 from time import sleep
-import time
 import datetime
-
+import os
 
 
 def abrir_github():
@@ -16,13 +14,13 @@ def abrir_github():
 
 def escolher_pagina_e_subir_arquivos():
     x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\listar_repositorio.png')
-    p.moveTo(x1,y1)
+    p.moveTo(x1,y1,duration=1)
     p.click()
     x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\Curso02_github.png')
-    p.moveTo(x1,y1)
+    p.moveTo(x1,y1,duration=1)
     p.click()
-    x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\titulo.png')
-    p.moveTo(x1,y1)
+    x1,y1 = 147, 502
+    p.moveTo(x1,y1,duration=1)
     p.click()
     write(f'{datetime.datetime.now()}')
     x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\descriptions.png')
@@ -33,6 +31,7 @@ def escolher_pagina_e_subir_arquivos():
     x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\commit_to_main.png')
     p.moveTo(x1,y1,duration=1)
     p.click()
+    sleep(1)
     p.hotkey('ctrl','p')
 
 
