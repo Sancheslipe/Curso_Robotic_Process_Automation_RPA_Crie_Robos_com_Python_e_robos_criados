@@ -9,7 +9,7 @@ try:
     # aaaa:
     print('iniciou...')
     #SEMPRE ALTERAR O NOME DA PASTE SCHEDULE
-    schedule.every().day.at("17:26").do(apr.bot_09())
+    schedule.every().day.at("17:26").do(apr.bot_09(), 'ATIV009')
     print('passou, deu boa')
     send.enviar_email('fsanches.0502@gmail.com','commitado com sucesso')
     while True:
