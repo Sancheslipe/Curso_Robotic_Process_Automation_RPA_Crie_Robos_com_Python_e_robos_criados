@@ -36,6 +36,7 @@ def escolher_pagina_e_subir_arquivos():
 
 
 def bot_09():
+    p.FAILSAFE = False
     os.system('taskkill /f /im GitHubDesktop.exe')
     os.system('cls')
     abrir_github()

@@ -1,15 +1,15 @@
-import schedule_org
+import schedule
 import time
-from Robo09 import bot_09
-from robo_07 import enviar_email
+from atividade_09_automatizar_github.robo_09 import bot_09
+from atividade_07_automatizar_email.robo_07 import enviar_email
 
 
 try:
     print('iniciou...')
     #SEMPRE ALTERAR O NOME DA PASTE SCHEDULE
-    schedule_org.every().day.at('16:38').do(bot_09())
+    schedule.every().day.at('16:46').do(bot_09())
     while True:
-        schedule_org.run_pending()
+        schedule.run_pending()
         time.sleep(1)
         enviar_email('fsanches.0502@gmail.com','commitado com sucesso')
 except IndexError as e:

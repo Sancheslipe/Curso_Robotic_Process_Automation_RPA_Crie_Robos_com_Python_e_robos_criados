@@ -1,4 +1,4 @@
-import schedule
+import schedule_org
 import time
 from Robo01 import BotRobo01
 import smtplib
@@ -8,11 +8,11 @@ from email.mime.text import MIMEText
 try:
     print('Iniciou..')
 
-    schedule.every().day.at("18:29").do(BotRobo01)
-    schedule.every().day.at("19:29").do(BotRobo01)
+    schedule_org.every().day.at("18:29").do(BotRobo01)
+    schedule_org.every().day.at("19:29").do(BotRobo01)
 
     while True:
-        schedule.run_pending()
+        schedule_org.run_pending()
         time.sleep(1)
 
 except IndexError as e:
