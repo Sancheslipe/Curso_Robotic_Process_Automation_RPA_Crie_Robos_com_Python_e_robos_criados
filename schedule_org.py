@@ -7,7 +7,7 @@ from atividade_07_automatizar_email.robo_07 import enviar_email
 # aaaa:
 print('iniciou...')
 #SEMPRE ALTERAR O NOME DA PASTE SCHEDULE
-schedule.every().day.at("16:55").do(bot_09())
+schedule.every(interval='days').days.at("16:55").do(bot_09())
 enviar_email('fsanches.0502@gmail.com','commitado com sucesso')
 while True:
     schedule.run_pending()
