@@ -2,6 +2,7 @@ import pyautogui as p
 from keyboard import write
 from time import sleep
 import datetime
+import sys
 import os
 
 
@@ -38,11 +39,15 @@ def escolher_pagina_e_subir_arquivos():
 
 
 def bot_09():
-    p.FAILSAFE = False
-    os.system('taskkill /f /im GitHubDesktop.exe')
-    os.system('cls')
-    abrir_github()
-    escolher_pagina_e_subir_arquivos()
+    try:
+        p.FAILSAFE = False
+        os.system('taskkill /f /im GitHubDesktop.exe')
+        os.system('cls')
+        abrir_github()
+        escolher_pagina_e_subir_arquivos()
+    except:
+        exc_type, error, line = sys.exc_info()
+        print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
 
 if __name__ == '__main__':
     os.system('cls')
