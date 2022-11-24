@@ -3,7 +3,6 @@ import time
 import sys
 import atividade_09_automatizar_github.robo_09 as apr
 import atividade_07_automatizar_email.robo_07 as send
-#aaaaaaa
 
 try:
     # aaaa:
