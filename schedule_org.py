@@ -9,7 +9,7 @@ print('\niniciou\n')
 
 while True:
     t = datetime.datetime.now().strftime("%H:%M:%S")
-    if t == '09:27:25':
+    if t == '09:51:25':
         try:
             # aaaa:
             print('robo rodando...')
@@ -17,7 +17,9 @@ while True:
             
             apr.bot_09()
             print('passou, deu boa')
-            send.enviar_email('fsanches.0502@gmail.com','commitado com sucesso')
+            remetente = 'fsanches.0502@gmail.com'
+            mensagem = 'commitado com sucesso'
+            send.enviar_email(remetente=remetente,str_mensagem=mensagem)
             while True:
                 schedule.run_pending()
                 time.sleep(1)
