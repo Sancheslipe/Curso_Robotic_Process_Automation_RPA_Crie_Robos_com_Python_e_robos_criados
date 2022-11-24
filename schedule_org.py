@@ -9,7 +9,7 @@ print('\niniciou\n')
 
 while True:
     t = datetime.datetime.now().strftime("%H:%M:%S")
-    if t == '09:21:00':
+    if t == '09:27:25':
         try:
             # aaaa:
             print('robo rodando...')

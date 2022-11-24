@@ -13,6 +13,7 @@ def abrir_github():
     p.press('enter')
     sleep(1.5)
 
+#rodando
 
 def escolher_pagina_e_subir_arquivos():
     p.FAILSAFE = False
