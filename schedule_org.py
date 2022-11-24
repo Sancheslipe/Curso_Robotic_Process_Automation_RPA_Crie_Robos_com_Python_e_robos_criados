@@ -9,7 +9,7 @@ print('\niniciou\n')
 
 while True:
     t = datetime.datetime.now().strftime("%H:%M:%S")
-    if t == '09:18:20':
+    if t == '09:21:00':
         try:
             # aaaa:
             print('robo rodando...')
@@ -24,5 +24,6 @@ while True:
         except:
             exc_type, error, line = sys.exc_info()
             print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
+        print('robô finalizado')
     else:
         time.sleep(1)

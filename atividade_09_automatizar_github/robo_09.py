@@ -28,7 +28,13 @@ def escolher_pagina_e_subir_arquivos():
         p.click()
         write(f'{datetime.datetime.now()}')
     except:
-        x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\comentario_2.png')
+        test = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\comentario_2.png')
+        if (test == None) :
+            p.moveTo(x=216, y=532)
+            p.click()
+            write(f'{datetime.datetime.now()}')
+        else:
+            x1,y1 = test
         p.moveTo(x1,y1,duration=1)
         p.click()
         write(f'{datetime.datetime.now()}')
