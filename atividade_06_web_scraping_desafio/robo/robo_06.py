@@ -35,7 +35,7 @@ def pega_dados_e_retorna_em_variaveis(qtde):
     pessoa = int(qtde)
     #clica na pessoa
     driver.find_element(By.CSS_SELECTOR ,f"body > div.bg-white > main > div.max-w-4xl.mx-auto.bg-white.shadow.overflow-hidden.sm\:rounded-md > ul > li:nth-child({pessoa}) > a > div > div.flex.items-center.justify-between > p").click()
-    sleep(3)
+    sleep(2)
     #Nome:
     nome = driver.find_element(By.XPATH,'/html/body/div/div[1]/div/div[1]/p[2]/span/b').text
     #dias:
@@ -48,15 +48,15 @@ def pega_dados_e_retorna_em_variaveis(qtde):
     try:
         porte = driver.find_element(By.XPATH,xpath_porte[0]).text
     except:
-        sleep(1)
+        sleep(0.5)
     try:       
         porte = driver.find_element(By.XPATH,xpath_porte[1]).text
     except:
-        sleep(1)
+        sleep(0.5)
     try:       
         porte = driver.find_element(By.XPATH,xpath_porte[2]).text
     except:
-        sleep(1)
+        sleep(0.5)
     return nome,dias,porte
 
 
@@ -66,7 +66,7 @@ def armazenar_informacoes_em_listas():
     dias_list = []
     porte_list = []
     sit_list = []
-    for l in range(10):
+    for l in range(1):
         qtde = 1
         sleep(1.5)
         while qtde >=1 and qtde<28:

@@ -4,7 +4,7 @@ import sys
 import os
 
 def abrir_arquivo():
-    arquivo = pd.read_excel(f'C:\\Users\\Ana Paula\\Downloads\\alterar_tabela.xlsx.xlsx')
+    arquivo = pd.read_excel(f'C:\\Curso02_github\\atividade_04_editar_planilha\\tabela.xlsx')
     tamanho = len(arquivo)
     return tamanho, arquivo
 
@@ -21,7 +21,7 @@ def editar_arquivo(tamanho,arquivo):
         else:
             cont = cont
             print('digite um valor válido! ')
-    arquivo.to_excel(f'C:\\Users\\Ana Paula\\Downloads\\alterar_tabela.xlsx.xlsx',index=False)
+    arquivo.to_excel(f'C:\\Curso02_github\\atividade_04_editar_planilha\\tabela.xlsx',index=False)
 
 def bot_atividade_04():
     try:
