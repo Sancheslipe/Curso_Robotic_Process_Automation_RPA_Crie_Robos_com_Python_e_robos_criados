@@ -22,10 +22,14 @@ def escolher_pagina_e_subir_arquivos():
     x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\Curso02_github.png')
     p.moveTo(x1,y1,duration=1)
     p.click()
-    x1,y1 = 150, 550
-    p.moveTo(x1,y1,duration=1)
-    p.click()
-    write(f'{datetime.datetime.now()}')
+    try:
+        x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\comentario_1.png')
+    # if (x1 == None) or (y1 == None):
+        p.moveTo(x1,y1,duration=1)
+        p.click()
+        write(f'{datetime.datetime.now()}')
+    except:
+        
     x1,y1 = p.locateCenterOnScreen('C:\\Curso02_github\\atividade_09_automatizar_github\\ima\\descriptions.png')
     p.moveTo(x1,y1)
     p.click()
