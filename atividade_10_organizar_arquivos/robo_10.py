@@ -49,8 +49,8 @@ def ler_arquivos_e_adicionar_na_pasta(path_inicial):
                 # move o arquivo para sua respectiva pasta
                 os.rename(f'{path_inicial}\\{arquivo}',f'{path_criar_pasta}\\{franq}\\{ano}\\{data}\\{arquivo}')
             elif ('txt' in arquivo) and (arquivo[0:5] == '83748'):
-                #altera o local do arquivo xlsx para onde o robô (.py) está
-                # os.rename(f'.\\listaempresas.xlsx',f'D:\\atividade_10_organizar_arquivos')
+                #problema em alterar o local do arquivo xlsx para onde o robô (.py) está
+                #os.rename(f'.\\listaempresas.xlsx',f'D:\\atividade_10_organizar_arquivos')
                 #codigo empresa == array que guarda os códigos na qual o index +1 é igual ao numero da franquia
                 codigo_empresa = []
                 #lê a planilha que possui os códigos
@@ -99,11 +99,10 @@ def bot_10():
         print('organizou pasta 4')
         ler_arquivos_e_adicionar_na_pasta('C:\\Pastas Compartilhadas\\FCI\\06_FCI\\01_Hennings\\Robo\\Robo\\Retorno\\Processado\\Arquivos')
         print('organizou pasta 5')
-        
-
     except:
         exc_type, error, line = sys.exc_info()
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
+
 
 if __name__ == '__main__':
     bot_10()
