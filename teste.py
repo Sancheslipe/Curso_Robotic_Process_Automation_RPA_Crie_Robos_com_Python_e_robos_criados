@@ -13,12 +13,12 @@
 #             destino = arquivo[-6:-4]  
 #             #altera o arquivo de lugar 
 #             os.rename(f"C:\\Users\\Ana Paula\\OneDrive\\Área de Trabalho\\mover\\{arquivo}", f"C:\\Users\\Ana Paula\\OneDrive\\Área de Trabalho\\teste\\{destino}\\{arquivo}")
-import pandas as pd
-import sys
-import os 
+# import pandas as pd
+# import sys
+# import os 
 
-os.makedirs('C:\\Pastas Compartilhadas\\FCI\\06_FCI\\01_Hennings\\Robo')
-print('pastas ciradas com sucesso')
+# os.makedirs('C:\\Pastas Compartilhadas\\FCI\\06_FCI\\01_Hennings\\Robo')
+# print('pastas ciradas com sucesso')
 # codigo_empresa = []
 
 # planilha = pd.read_excel(f"C:\\Users\\Ana Paula\\Downloads\\listaempresas.xlsx", sheet_name='Select e070fil')
@@ -72,3 +72,14 @@ e dai ele confere as nota,
 
 
 """
+
+import os 
+import sys
+from pathlib import Path
+try:
+    # os.rename(f'.\\listaempresas.xlsx', 'D:\\atividade_10_organizar_arquivos')
+   file = Path('./listaempresas.xlsx')
+   os.rename(file,'D:\\atividade_10_organizar_arquivos')
+except:
+    exc_type, error, line = sys.exc_info()
+    print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
