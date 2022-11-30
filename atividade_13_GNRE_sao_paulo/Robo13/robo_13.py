@@ -1,7 +1,7 @@
 import os
 import sys
-# from time import sleep
-from keyboard import write
+from time import sleep
+import keyboard
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -38,7 +38,14 @@ try:
 
     driver.get('https://daeonline1.fazenda.mg.gov.br/daeonline/executeEmissaoDocumentoArrecadacao.action')
     driver.maximize_window()
-    driver
+    sleep(2)
+    driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/div[3]/form/div[1]/div[1]/div/div/a').click()
+    #CLICAR NO CNPJ
+    driver.find_element(By.XPATH, '/html/body/div[1]/div[6]/div/ul/li[3]/a').click()
+    #clicar no input
+    input = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/div[3]/form/div[2]/div[1]/div/div/input').click()
+    keyboard.write('mensagem de teste')
+
 except:
     exc_type, error, line = sys.exc_info()
     print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
