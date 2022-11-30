@@ -1,0 +1,17 @@
+
+def processa_excel(ativ, driver, caminho_pro):
+	p.locate_center_on_screen('{ativ}\\ima\\imagen.png')
+
+
+
+
+
+def BOTAtviidade001 ():
+
+	caminhos:
+	caminho até pro
+	caminho do driver
+	
+	if len(pasta) > 0:
+		processar_excel(ativ, driver, caminho_pro)
+	
