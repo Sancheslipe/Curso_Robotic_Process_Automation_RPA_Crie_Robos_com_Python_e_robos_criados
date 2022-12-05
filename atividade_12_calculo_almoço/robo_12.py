@@ -31,6 +31,8 @@ def adicionar_dados_na_planilha(comida,valor):
         planilha.loc[planilha['DIA'] == f'{dia_mes}','COMIDA'] = comida
         planilha.loc[planilha['DIA'] == f'{dia_mes}','VALOR'] = float(valor)
         planilha.to_excel('C:\\Curso02_github\\atividade_12_calculo_almoço\\arquivo_teste.xlsx',index=False)
+        
+
     except:
         exc_type, error, line = sys.exc_info()
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
