@@ -14,30 +14,30 @@ def read_file_excell_mg():
         #array que guarda todas as notas fiscais 
         nota_fiscal = []
         list_valor_imposto = []
+        list_cnpj = []
         #lê a planilha na aba Select e501tcp
-        planilha = pd.read_excel(r'C:\Curso02_github\atividade_13_GNRE_sao_paulo\Notas_heinigs\DadosNotas.xlsx',sheet_name='Select e501tcp')
+        planilha = pd.read_excel(r'C:\Curso02_github\atividade_13_GNRE_sao_paulo\Notas_heinigs\DadosNotas_Def.xlsx',sheet_name='Select e501tcp')
         #passa por toda a planilha
         for l in range(len(planilha)):
             #apende o numero da nota fiscal somente se ele no campo da região de atuacao eh igual a MG
             if planilha.loc[l,"SIGUFS"] == 'MG':
                 numero_nota_fiscal = planilha.loc[l,"NUMNFV"]
                 valor_imposto = str(planilha.loc[l,"VLRORI"]).replace(',','')
+                cnpj = str(planilha.loc[l,"NUMCGC"])
                 if len(valor_imposto) == 1 :
                         valor_imposto = f'{valor_imposto}00'
                 elif len(valor_imposto) == 2 :
                         valor_imposto = f'{valor_imposto}0'
                 nota_fiscal.append(numero_nota_fiscal)
-                list_valor_imposto.append(valor_imposto)  
-        # print(f'nota fiscal: {nota_fiscal[0]}')
-        
-        # print(f'valor_imposto:{list_valor_imposto[0]}')          
-        return nota_fiscal,list_valor_imposto
+                list_valor_imposto.append(valor_imposto) 
+                list_cnpj.append(cnpj) 
+        return nota_fiscal,list_valor_imposto,list_cnpj
     except:
         exc_type, error, line = sys.exc_info()
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
 
 
-def enter_fazenda_mg(driver):
+def enter_fazenda_mg(driver,cnpj):
     try:
         #entra no Site
         driver.get('https://daeonline1.fazenda.mg.gov.br/daeonline/executeEmissaoDocumentoArrecadacao.action')
@@ -58,7 +58,7 @@ def enter_fazenda_mg(driver):
         #input para pausar a aplicação enquanto estou resolvendo o captcha 
         input('resolva o captcha!')
         #preenche com o cnpj da hennings
-        driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/div[3]/form/div[2]/div[1]/div/div/input').send_keys('83748772000990')
+        driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/div[3]/form/div[2]/div[1]/div/div/input').send_keys(cnpj)
         Keys.ENTER
         # clicar no cntinuar
         driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/div[3]/form/div[5]/div[1]/div/a[1]').click()
@@ -98,7 +98,6 @@ def fill_in_information_on_the_website_and_download_pdf_mg(driver,numero_nota_fi
         Keys.ENTER
         #preenche o Numero da nota fiscal NUMNFV
         sleep(1)
-        # driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/form/fieldset[4]/div[2]/div[2]/div[1]/span[2]/div/input').send_keys(f'{numero_nota_fiscal}')
         driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/form/fieldset[4]/div[2]/div[2]/div[1]/span[2]/div/input').send_keys(f'{numero_nota_fiscal}')
         Keys.ENTER
         driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/form/fieldset[4]/div[1]/a').click()
@@ -108,6 +107,11 @@ def fill_in_information_on_the_website_and_download_pdf_mg(driver,numero_nota_fi
         driver.find_element(By.XPATH, '//*[@id="submit"]').click()
         sleep(3)
         print('passou para outra página')
+        #caso já exista um arquivo com esse nome e este path ele exclui 
+        if os.path.exists(os.path.expanduser("~")+r'\Downloads\daeonline.pdf'):
+            os.remove(path=os.path.expanduser("~")+r'\Downloads\daeonline.pdf')
+            print('removeu o arquivo chamado daeonline.pdf')
+
         driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div/form/div[2]/div/a').click()
         sleep(5)
         print('baixou o PDF')
@@ -119,8 +123,9 @@ def fill_in_information_on_the_website_and_download_pdf_mg(driver,numero_nota_fi
 
 def read_pdf_change_his_name_and_change_his_folder_mg():
     try:
+        #apagar arquivos com o nome daeonline.pdf antes de fazer o download
         #o pdf por padrao é baixado nesta pasta com este nome 
-        pdf_file = open('C:\\Users\\Ana Paula\\Downloads\\daeonline.pdf','rb')
+        pdf_file = open(os.path.expanduser("~")+r'\Downloads\daeonline.pdf','rb')
         print('abriu o arquivo daeonline.pdf')
         #lê os dados do pdf
         dados_do_pdf = pdf.PdfFileReader(pdf_file)
@@ -137,7 +142,7 @@ def read_pdf_change_his_name_and_change_his_folder_mg():
                 nome_arquivo = linha[0:56].replace(' ','').replace('-','')
         pdf_file.close()  
         #altera o nome do pdf para o código de barra, e move ele para uma pasta selecionada      
-        os.rename('C:\\Users\\Ana Paula\\Downloads\\daeonline.pdf',f'C:\\Curso02_github\\atividade_13_GNRE_sao_paulo\\arquivos_mod\\{nome_arquivo}.pdf')
+        os.rename(os.path.expanduser("~")+r'\Downloads\daeonline.pdf',f'C:\\Curso02_github\\atividade_13_GNRE_sao_paulo\\arquivos_mod\\{nome_arquivo}.pdf')
         print(f'trocou a pasta e o renomeou ')
     except:
         exc_type, error, line = sys.exc_info()
@@ -150,14 +155,14 @@ def GNRE_mg():
         #fecha abas do chrome
         os.system('taskkill /f /im chrome.exe')
         #lê o arquivo excell
-        list_notas_fiscais,list_valor = read_file_excell_mg()
+        list_notas_fiscais,list_valor,list_cnpj = read_file_excell_mg()
         for l in range(0,2): #a len de 0,2 é só para teste, caso deseje fazer com o tamanho certo é só trocar o campo por esse comentário atrasin range(len(list_notas))
             #o processo abaixo é para abrir e criar o drive de acordo com a nova regra de implantação
             options = webdriver.ChromeOptions()   
             options.add_experimental_option('excludeSwitches', ['enable-logging'])
             driver = webdriver.Chrome(options=options)
             print(f'executando processo {l+1}')
-            enter_fazenda_mg(driver)
+            enter_fazenda_mg(driver,list_cnpj[l])
             fill_in_information_on_the_website_and_download_pdf_mg(driver,list_notas_fiscais[l],list_valor[l])
             read_pdf_change_his_name_and_change_his_folder_mg()
             print(f'processo {l+1} Finalizado com sucesso')
