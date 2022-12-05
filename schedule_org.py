@@ -9,16 +9,13 @@ print('\niniciou\n')
 
 while True:
     t = datetime.datetime.now().strftime("%H:%M:%S")
-    if t != '09:27:25':
+    if t == '17:38:00':
         try:
-            # aaaa:
             print('robo rodando...')
             #SEMPRE ALTERAR O NOME DA PASTE SCHEDULE
-            
             apr.bot_09()
             print('passou, deu boa')
-            
-            send.enviar_email('fsanches.0502@gmail.com','commitado com sucesso')
+            send.enviar_email('fsanches.0502@gmail.com',f'commitado com sucesso {datetime.datetime.now().strftime("%H:%M:%S")}')
             while True:
                 schedule.run_pending()
                 time.sleep(1)
