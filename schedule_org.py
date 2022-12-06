@@ -9,7 +9,7 @@ print('\niniciou\n')
 
 while True:
     t = datetime.datetime.now().strftime("%H:%M:%S")
-    if t == '18:00:00':
+    if t == '08:38:00':
         try:
             print('robo rodando...')
             #SEMPRE ALTERAR O NOME DA PASTE SCHEDULE

@@ -54,7 +54,7 @@ def bot_09():
     try:
         p.FAILSAFE = False
         os.system('taskkill /f /im GitHubDesktop.exe')
-        os.system('cls')
+        # os.system('cls')
         abrir_github()
         escolher_pagina_e_subir_arquivos()
     except:
@@ -62,6 +62,6 @@ def bot_09():
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
 
 if __name__ == '__main__':
-    os.system('cls')
+    # os.system('cls')
     bot_09()
     print('robô executado com sucesso')
