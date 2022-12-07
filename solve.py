@@ -76,3 +76,6 @@ sabado (hope)
 domingo de manha(culto normal)
 
 """
+def funcao_teste():
+    print('passoooooooooooooou')
+
