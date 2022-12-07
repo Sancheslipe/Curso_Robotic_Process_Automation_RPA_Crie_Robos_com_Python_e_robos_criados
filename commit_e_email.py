@@ -1,6 +1,5 @@
-import datetime
-import time
 import sys
+import datetime
 import atividade_09_automatizar_github.robo_09 as apr
 import atividade_07_automatizar_email.robo_07 as send
 
@@ -21,4 +20,10 @@ except:
     print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
 
 
-        
+#esta mensagem é um teste
+'''
+ERROR: (-2146959355, 'Falha na execução do servidor', None, None)
+CLASS: <class 'pywintypes.com_error'>
+FUNC: <module>
+LINE:  16
+'''

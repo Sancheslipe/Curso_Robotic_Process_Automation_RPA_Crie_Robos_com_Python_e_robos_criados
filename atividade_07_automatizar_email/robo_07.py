@@ -29,3 +29,11 @@ if (__name__ == "__main__"):
     os.system('cls')
     bot_007()
     print('robô executado com sucesso!')
+
+
+    '''
+    ERROR: (-2146959355, 'Falha na execução do servidor', None, None)
+    CLASS: <class 'pywintypes.com_error'>
+    FUNC: bot_007
+    LINE:  22
+    '''
