@@ -28,3 +28,5 @@ while True:
             print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
     else:
         time.sleep(1)
+
+        
