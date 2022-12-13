@@ -36,30 +36,79 @@ def limpar_pastas(path_pasta_final):
                 
 
 def entrar_no_site_e_baixar_ultimos_100(driver):
+    find = False
     try:
         #entra no site
         driver.get('https://www.me.com.br/supplier/inbox/transactions/13')
         driver.maximize_window()
         #preenche o login
-        element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/main/main/section[2]/div[2]/form/div[1]/div/input'))).send_keys('E1EDDEAB')
+        for click in range(50):
+            try:
+                element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/main/main/section[2]/div[2]/form/div[1]/div/input'))).send_keys('E1EDDEAB')
+                break
+            except:
+                sleep(1)
         #preenche a senha 
-        element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/main/main/section[2]/div[2]/form/div[2]/div/input'))).send_keys('MEHennings@2022')
+        for click in range(50):
+            try:
+                element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/main/main/section[2]/div[2]/form/div[2]/div/input'))).send_keys('MEHennings@2022')
+                break
+            except:
+                sleep(1)
         #clica no botao entrar
-        element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/main/main/section[2]/div[2]/form/div[4]/button'))).click()
+        for click in range(50):
+            try:
+                element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/main/main/section[2]/div[2]/form/div[4]/button'))).click()
+                break
+            except:
+                sleep(1)
         # #fecha o pop up 
-        p.press('esc') 
-        sleep(2)
+        for click in range(15):
+            try:
+                driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/header/div/div/div/div/label')
+                p.press('esc') 
+                find = True
+                break
+            except:
+                sleep(0.5)
+        if find == False:
+            p.press('esc')
         #clicar nos 3 pontinhos
-        element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/header/nav/div/button'))).click()
+        for click in range(50):
+            try:
+                element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/header/nav/div/button'))).click()
+                break
+            except:
+                sleep(1)
         #clicar no 100 itens
-        element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/header/nav/div/ul/li[5]/ul/li[4]/a'))).click()
+        for click in range(50):
+            try:
+                element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/header/nav/div/ul/li[5]/ul/li[4]/a'))).click()
+                break
+            except:
+                sleep(1)
         #seleciona todos 
-        element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/div/div/table/thead/tr/th[1]/div'))).click()
+        for click in range(50):
+            try:
+                element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/div/div/table/thead/tr/th[1]/div/div/div'))).click()
+                break
+            except:
+                sleep(1)
         sleep(2)
         #clicar nos 3 pontinhos
-        element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/header/nav/div/button'))).click()
+        for click in range(50):
+            try:
+                element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/header/nav/div/button'))).click()
+                break
+            except:
+                sleep(1)
         #clicar no exportar excel
-        element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/header/nav/div/ul/li[6]/ul/li[1]'))).click()
+        for click in range(50):
+            try:
+                element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/main/div/div/div/main/div[2]/section/section/header/nav/div/ul/li[6]/ul/li[1]'))).click()
+                break
+            except:
+                sleep(1)
         sleep(10)
         print('baixou o arquivo')
     except:
@@ -93,7 +142,7 @@ def bot_16():
         limpar_pastas(path_pasta)
         options = webdriver.ChromeOptions()   
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(options=options, executable_path=r'DriverWeb\\chromedriver.exe')
         entrar_no_site_e_baixar_ultimos_100(driver)
         #path_pasta == pasta que você deseja mover o arquivo
         adicionar_arquivo_na_pasta_certa(path_pasta)
@@ -109,6 +158,8 @@ if __name__ == '__main__':
         #executa todas as outras funcoes acima 
         bot_16()
         print('Robô finalizado com sucesso')
+    except KeyboardInterrupt:
+        quit()
     except:
         exc_type, error, line = sys.exc_info()
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
