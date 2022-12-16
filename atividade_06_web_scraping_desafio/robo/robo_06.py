@@ -161,3 +161,15 @@ if (__name__ == '__main__'):
     bot_006(driver)
     print('Robô executado com sucesso')
 
+''''
+bro one question:
+
+im doing the excel thing, from our robot. and the informations comes in that whay 
+
+
+
+do you know how to "expand" the cell? or one bether whay to make this informations be clear then now?
+
+
+
+'''
