@@ -4,6 +4,7 @@ from datetime import datetime
 import numpy as np
 import xlsxwriter
 import pandas as pd
+import pyautogui as p 
 
 def SaveExcelWithFilters(get_file_path, save_file_path, current_file_name, new_file_name, name_sheet, headers_list):
     try:
@@ -74,9 +75,9 @@ def open_excel_extract_informations_and_save_informations():
 
 def find_and_store_all_informations():
     # este try eh para receber todos os campos que sao necesaarios
-    quantidade_informacoes_FRANQ = []
+    quantidade_informacoes = []
     try:
-        planilha_dados = pd.read_excel('proc\\planilha_dados.xlsx',sheet_name='Sheet1')
+        planilha_dados = pd.read_excel('proc\\planilha_dados.xlsx',sheet_name='Sheet1',dtype=str)
         campos_a_serem_enviados = list(planilha_dados["CAMPOS A SEREM ENVIADOS"])
         dados_necessarios = [campo for campo in campos_a_serem_enviados if type(campo) == str]
     except:
@@ -85,9 +86,9 @@ def find_and_store_all_informations():
     # este try eh para que se crie o dicionario com a todas as informacoes
     try:
         for l in range(0,len(dados_necessarios)):
-            quantidade_informacoes_FRANQ.append(f'info_{l+1}')
+            quantidade_informacoes.append(f'info_{l+1}')
         # dicionario que guarda todas as informacoes
-        dict_info_FRANQ = {info :'' for info in quantidade_informacoes_FRANQ}
+        dict_info = {info :'' for info in quantidade_informacoes}
     except:
         exc_type, error, line = sys.exc_info()
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
@@ -100,13 +101,14 @@ def find_and_store_all_informations():
     # Este try: eh para buscar todas as informacoes dentro da planilha no campo DADOS
     try:
         for l in range(len(dados_necessarios)):
-            dict_info_FRANQ[f'info_{l+1}'] = planilha_informacoes.loc[planilha_informacoes['FRANQUEADO']]
-            
-        print(f'as informações do FRANQUEADO:{nome}')
-        for l in range(len(dados_necessarios)):
-            print(dados_necessarios[l])
-            print(dict_info_FRANQ[f'info_{l+1}'])
-            
+            informacao = planilha_informacoes[dados_necessarios[l]]
+            dict_info[f'info_{l+1}'] = informacao
+        #para ver que dado é necessário
+        # for l in range(len(dados_necessarios)):
+        #     print(dados_necessarios[l])
+        #     print(dict_info[f'info_{l+1}'])
+        return dict_info, dados_necessarios
+
     except:    
         exc_type, error, line = sys.exc_info()
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
@@ -120,7 +122,7 @@ def bot_18():
         path = 'C:\\Curso02_github\\atividade_18P_lanilha EcoPower\\proc\\'
         headers_list = ['NOME FRANQUEADO', 'CAMPOS A SEREM ENVIADOS','CORES DOS CAMPOS']
         SaveExcelWithFilters(path, path, 'planilha_dados.xlsx', 'planilha_dados.xlsx', 'Sheet1', headers_list)
-        find_and_store_all_informations()
+        dicionario_informacoes,dados_buscados_na_planilha = find_and_store_all_informations()
         
     
     except:
@@ -134,7 +136,7 @@ if (__name__ == '__main__'):
         os.system('cls')
         
         bot_18()
-
+        print(f'APLICAÇÃO FINALIZADA COM SUCESO!')
     except:
         exc_type, error, line = sys.exc_info()
         print(f'ERROR: {error}\nCLASS: {exc_type}\nFUNC: {sys._getframe().f_code.co_name}\nLINE:  {line.tb_lineno}\n')
